@@ -9,4 +9,4 @@ Things to do
 Use either a package json to set a NODE ENV which will then set the custom.js to my CDN file (for production) or to my local for development.
 
 [_] Make a terminal shell so this works on a webpage without code pen.
-[DEMO]('https://codepen.io/mariomui/pen/oRBZVY')
+DEMO("https://codepen.io/mariomui/pen/oRBZVY")
