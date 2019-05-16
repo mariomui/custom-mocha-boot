@@ -55,7 +55,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    * Build up the functions that will be exposed as the Jasmine public interface. A project can customize, rename or alias any of these functions as desired, provided the implementation remains unchanged.
    */
   var jasmineInterface = jasmineRequire.interface(jasmine, env);
-
   /**
    * Add all of the Jasmine global/public interface to the global scope, so a project can use the public interface directly. For example, calling `describe` in specs instead of `jasmine.getEnv().describe`.
    */
@@ -115,7 +114,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    * Filter which specs will be run by matching the start of the full name against the `spec` query param.
    */
   var specFilter = new jasmine.HtmlSpecFilter({
-    filterString: function() { return queryString.getParam("spec"); }
+    filterString: function() { 
+      return queryString.getParam("spec"); }
   });
 
   env.specFilter = function(spec) {
