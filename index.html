@@ -1,11 +1,15 @@
 <html>
   <head>
+    <meta name="author" content="Mario Mui"></meta>
+  <meta creation="date" content: "2019"> </meta>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    
+<link rel="stylesheet" href="./index.css" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.17/marked.js"></script>
     </head>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 <div class='container-fluid' >
   
   <!-- tabs -->
@@ -25,55 +29,68 @@
       
     </div>
     <script type="text/markdown" id="readme-md">
-      Switchy
-      
-      Make a function that takes a array of strings. in the first parameter, an object in the second parameter. 
+### Switchy
+Make a function that takes a array of strings in the first parameter, an object in the second parameter. 
       
       I want you to put the strings in that array as the properties in that object.
       
       As for the values of that object, make them all odd numbers. 
       
       Doesnt matter what they are. I don't want this function to return anything.
+      
+      This one may be hard so if you get stuck, click the I Give UP button.
     </script>
+    <script>
+  // insert the readme as Markdown into the template
+  var data = document.getElementById("readme-md").innerHTML;
+  document.getElementById("pills-readme").innerHTML = marked(data)
+</script>
+  
+  <input type="button" value="I give up" id="answerInput"/>
     
-    <!-- tab content -->
-    <!--   <div class="tab-content clearfix" style="margin-top: 20px">
-      <div class="tab-pane active" id="specs">
-      </div>
-      <div class="tab-pane" id="readme">
-      </div>
-    </div>
-  </div> -->
-  
-  
-  
+    <div class="hide" id="answerContent"></div>
+    
   <script type="text/javascript">
   window.getContainer = function() {
     return document.getElementById("pills-spec");
   }
+    let toggle = true;
+  document.getElementById('answerInput')
+    .addEventListener('click', () => {
+   if (toggle) {
+      document.getElementById("answerContent").style.display="block";
+     toggle=false;
+   } else {
+      document.getElementById("answerContent").style.display="none";
+     toggle=true;
+   }
+  }) 
   </script>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.0.0/jasmine.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.12.2/themes/prism.css" />
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.0.0/jasmine.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.0.0/jasmine-html.js"></script>
-<script src="./custom-boot.js"></script>
-
-
-<script src="./index.js"></script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.17/marked.js"></script>
-<script>
-  // insert the readme as Markdown into the template
-  var data = document.getElementById("readme-md").innerHTML;
-  document.getElementById("pills-readme").innerHTML = marked(data)
-</script>
     
+<script src="https://rawcdn.githack.com/mariomui/custom-mocha-boot/463f6321587caae2e1a83e2bbca0ea09bc5d64e6/custom-boot.js"></script>
 
-
+    <script type="text/markdown" id="answer">
+```javascript
+function switchy(arr,obj) {
+  for (var i = 0; i < arr.length; i++) {
+    obj[arr[i]] = 3;
+  }
+}
+```
+    </script>
+    
+    <script>
+      const answer = document.getElementById("answer").innerHTML;
+    document.getElementById("answerContent").innerHTML = marked(answer);
+  
+    </script>
+    <script src='./index.js'></script>
 </div>
 </html>
